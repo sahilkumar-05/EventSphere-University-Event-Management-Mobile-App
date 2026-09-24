@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f7f7fb" id="themeColor">
+<title>EventSphere — Campus events, without the chaos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f7f7fb;--fg:#171827;--primary:#8067e8;--muted:#6d6b7d;--border:#e4e3ed;--card:#ffffff;--teal:#43b9b3}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--fg);font-family:"Plus Jakarta Sans",sans-serif;font-weight:300;overflow-x:hidden}a{color:inherit;text-decoration:none}button{font:inherit}.container{max-width:1280px;margin:auto;padding:0 32px}.noise{position:fixed;inset:0;pointer-events:none;z-index:100;opacity:.025;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}.aurora{position:absolute;border-radius:50%;filter:blur(120px);pointer-events:none}.aurora.one{width:560px;height:560px;top:-170px;left:15%;background:hsl(258 78% 60%);opacity:.35;animation:aurora1 22s ease-in-out infinite}.aurora.two{width:560px;height:560px;right:-180px;top:130px;background:hsl(178 62% 50%);opacity:.18;animation:aurora2 22s ease-in-out infinite}@keyframes aurora1{0%,100%{transform:translate(0,0)}50%{transform:translate(160px,60px)}}@keyframes aurora2{0%,100%{transform:translate(0,0)}50%{transform:translate(-130px,80px)}}@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}@keyframes rise{to{opacity:1;transform:translateY(0);filter:blur(0)}}@keyframes pulse{0%,100%{opacity:.08}50%{opacity:.32}}
+nav{position:fixed;top:0;left:0;right:0;height:76px;z-index:50;transition:.3s}nav.scrolled{background:rgba(247,247,251,.84);backdrop-filter:blur(18px);border-bottom:1px solid rgba(23,24,39,.07)}.nav-inner{height:100%;display:flex;align-items:center;justify-content:space-between}.brand{font-weight:700;letter-spacing:.22em;display:flex;gap:9px;align-items:center}.moon{width:16px;height:16px;border:1.5px solid currentColor;border-radius:50%;position:relative}.moon:after{content:"";position:absolute;background:var(--bg);width:13px;height:13px;border-radius:50%;right:-4px;top:-3px}.nav-links{display:flex;gap:34px;color:rgba(23,24,39,.62);font-size:12px}.nav-links a:hover{color:#fff}.desktop{display:inline}.pill{background:var(--primary);color:#0a0c1a;padding:11px 21px;border-radius:999px;font-size:12px;font-weight:500}.hero{position:relative;min-height:100vh;display:grid;grid-template-columns:55% 45%;align-items:center;overflow:hidden}.stars{position:absolute;inset:0;pointer-events:none}.star{position:absolute;width:2px;height:2px;background:#fff;border-radius:50%;animation:pulse 3s ease-in-out infinite}.hero-copy{position:relative;z-index:2;padding-top:55px}.eyebrow,.label{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.18em;color:var(--primary)}h1{font-size:clamp(46px,6.5vw,96px);line-height:1.02;letter-spacing:-.04em;margin:22px 0 0;font-weight:700;max-width:900px}h1 span{display:block;opacity:0;transform:translateY(40px);filter:blur(8px);animation:rise .9s cubic-bezier(.22,1,.36,1) forwards}h1 span:nth-child(2){animation-delay:.1s}h1 span:nth-child(3){animation-delay:.2s}.hero-text{max-width:590px;color:rgba(23,24,39,.62);font-size:18px;line-height:1.7;margin-top:28px;opacity:0;animation:fade .7s .45s forwards}@keyframes fade{to{opacity:1;transform:none}}.stores{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px;opacity:0;animation:fade .7s .6s forwards}.store{display:flex;align-items:center;gap:12px;padding:12px 16px;border:1px solid rgba(23,24,39,.10);border-radius:13px;background:rgba(255,255,255,.75);transition:.25s}.store:hover{transform:translateY(-3px);background:rgba(255,255,255,.09)}.store-icon{font-size:20px}.store small{display:block;color:rgba(23,24,39,.48);font-size:8px;text-transform:uppercase;letter-spacing:.1em}.store strong{font-size:12px;font-weight:500}.rating{margin-top:15px;font-size:11px;color:rgba(23,24,39,.55)}.phone-wrap{display:flex;justify-content:center;align-items:center;min-width:0;position:relative;z-index:2;perspective:1500px;opacity:0;animation:phoneIn 1.2s .15s forwards}@keyframes phoneIn{to{opacity:1;transform:scale(1)}}.phone{width:285px;max-width:100%;aspect-ratio:9/19;border:7px solid #202338;background:#080a15;border-radius:42px;padding:3px;position:relative;transform:rotateY(-14deg) rotateZ(3deg);box-shadow:0 35px 70px rgba(50,45,90,.20),0 0 70px rgba(128,103,232,.15);animation:float 6s ease-in-out infinite}.notch{position:absolute;z-index:5;top:2px;left:50%;transform:translateX(-50%);width:96px;height:20px;border-radius:20px;background:#080a15}.screen{height:100%;border-radius:34px;overflow:hidden;position:relative;background:radial-gradient(circle at 70% 15%,rgba(169,148,255,.28),transparent 32%),radial-gradient(circle at 15% 80%,rgba(75,220,210,.09),transparent 35%),#0d1021;padding:28px 22px}.screen-top{display:flex;justify-content:space-between;color:rgba(23,24,39,.62);font-size:10px;letter-spacing:.18em}.screen-content{position:absolute;left:22px;right:22px;bottom:25px}.screen-label{font-size:9px;color:#a994ff;text-transform:uppercase;letter-spacing:.18em}.screen h3{font-size:36px;font-weight:300;line-height:1.15;margin:10px 0}.screen-card{padding:15px;border:1px solid rgba(23,24,39,.10);border-radius:16px;background:rgba(255,255,255,.04);margin-top:30px}.screen-card-title{font-size:11px}.screen-card-sub{font-size:8px;color:rgba(23,24,39,.42);margin-top:5px}.proof{border-top:1px solid rgba(23,24,39,.07);border-bottom:1px solid rgba(23,24,39,.07);background:rgba(128,103,232,.035);padding:23px 0;color:rgba(23,24,39,.55);font-size:11px}.proof-inner{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}.section{padding:128px 0}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{background:var(--card);border:1px solid var(--border);border-radius:28px;padding:30px}.icon{color:var(--primary);font-size:22px}.card h3{font-size:18px;margin:30px 0 10px}.card p,.feature p,.timeline p{font-size:14px;line-height:1.9;color:rgba(23,24,39,.55)}.intro h2{font-size:clamp(34px,4vw,56px);line-height:1.05;letter-spacing:-.03em;margin:15px 0 0}.intro p{max-width:600px;color:rgba(23,24,39,.55);font-size:15px;line-height:1.8;margin-top:20px}.features{display:flex;flex-direction:column;gap:150px;margin-top:85px}.feature{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:100px}.feature.reverse .feature-phone{order:2}.feature-copy h3{font-size:clamp(30px,3vw,44px);letter-spacing:-.03em;line-height:1.1;margin:16px 0}.feature-phone{display:flex;justify-content:center}.mini-phone{width:250px}.mini-phone .screen{padding:28px 18px}.mini-phone.story .screen-content{top:100px;bottom:auto}.mini-phone.story .screen h3{font-size:25px}.mini-phone.breath .screen-content{top:110px;bottom:auto;text-align:center}.breath-circle{width:145px;height:145px;border:1px solid rgba(169,148,255,.3);border-radius:50%;margin:30px auto;display:flex;align-items:center;justify-content:center}.breath-circle:after{content:"";width:105px;height:105px;border-radius:50%;background:rgba(169,148,255,.1);border:1px solid rgba(169,148,255,.35)}.mini-phone.timer .screen-content{top:105px;bottom:auto;text-align:center}.timer-time{font-size:44px;font-weight:300;margin:18px 0}.sound-section{background:rgba(128,103,232,.035);border-top:1px solid rgba(23,24,39,.07);border-bottom:1px solid rgba(23,24,39,.07)}.sounds{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:50px}.sound{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:22px;transition:.25s}.sound:hover{transform:translateY(-4px);border-color:rgba(169,148,255,.5)}.sound-icon{font-size:19px;color:var(--primary)}.sound strong{display:block;font-size:13px;margin-top:27px}.sound span{font-size:10px;color:rgba(23,24,39,.42);display:block;margin-top:5px}.timeline{max-width:900px;margin:70px auto 0;position:relative}.timeline:before{content:"";position:absolute;left:94px;top:5px;bottom:5px;width:1px;background:linear-gradient(#a994ff,rgba(169,148,255,.03))}.moment{display:grid;grid-template-columns:120px 1fr;gap:28px;margin-bottom:48px;position:relative}.time{font-size:14px;color:var(--primary);font-variant-numeric:tabular-nums}.moment h3{font-size:17px;margin:0}.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:50px}.stars{position:static;display:flex;gap:3px;color:var(--primary)}.review h3{font-size:17px;margin-top:24px}.review .person{font-size:11px;color:rgba(23,24,39,.38);margin-top:22px}.pricing-section{background:rgba(128,103,232,.035)}.pricing{max-width:1000px;margin:50px auto 0;display:grid;grid-template-columns:1fr 1fr;gap:16px}.price h3{font-size:21px;margin:0}.price-value{font-size:30px;font-weight:300;margin-top:20px}.line{height:1px;background:rgba(23,24,39,.06);margin:30px 0}.price ul{padding:0;margin:0;list-style:none;display:grid;gap:14px;color:rgba(255,255,255,.5);font-size:13px}.price li:before{content:"✓";color:var(--primary);margin-right:10px}.price .cta{display:block;text-align:center;padding:13px;border-radius:12px;background:rgba(23,24,39,.06);margin-top:30px;font-size:12px}.premium{border-color:rgba(169,148,255,.6);background:rgba(169,148,255,.055)}.premium .cta{background:var(--primary);color:#0a0c1a}.trial{display:inline-block;color:#b9acff;background:rgba(169,148,255,.12);border-radius:999px;padding:6px 10px;font-size:9px;text-transform:uppercase;letter-spacing:.1em;float:right}.final{position:relative;text-align:center;overflow:hidden;padding:160px 0}.final-glow{position:absolute;width:480px;height:480px;border-radius:50%;left:50%;top:50%;transform:translate(-50%,-50%);background:rgba(169,148,255,.2);filter:blur(120px)}.final-content{position:relative}.final h2{font-size:clamp(38px,5vw,64px);max-width:800px;margin:20px auto 0;line-height:1.05;letter-spacing:-.03em}.final p{color:rgba(23,24,39,.55);font-size:13px;margin:20px auto;max-width:450px;line-height:1.8}.final .stores{justify-content:center;opacity:1;animation:none}footer{border-top:1px solid rgba(23,24,39,.07)}.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;padding:50px 0}.footer-title{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(23,24,39,.38)}.footer-links{display:grid;gap:12px;margin-top:16px;font-size:12px;color:rgba(23,24,39,.48)}.copyright{border-top:1px solid rgba(23,24,39,.07);padding:23px 0;color:rgba(23,24,39,.30);font-size:10px}
+.reveal{opacity:0;transform:translateY(24px);transition:.7s ease}.reveal.show{opacity:1;transform:none}
+/* Light theme refinements */
+.hero{background:radial-gradient(circle at 78% 30%,rgba(128,103,232,.08),transparent 34%),radial-gradient(circle at 15% 65%,rgba(67,185,179,.06),transparent 30%)}
+.proof,.sound-section,.pricing-section{background:rgba(128,103,232,.025)}
+.card,.sound{box-shadow:0 12px 35px rgba(45,42,75,.05)}
+.pill{box-shadow:0 8px 22px rgba(128,103,232,.18)}
+@media(max-width:900px){.container{padding:0 24px}.hero{grid-template-columns:55% 45%}.sounds{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:767px){.container{padding:0 20px}.desktop{display:none}.mobile{display:inline}.nav-links{display:none}.hero{display:flex;flex-direction:column;min-height:auto;padding-top:100px}.phone-wrap{order:1;height:52vh;min-height:390px;align-items:center;width:100%;padding-top:15px}.phone{width:min(220px,58vw);max-width:220px;transform:none}.hero-copy{order:2;padding:25px 0 70px}.hero-copy h1{font-size:46px}.hero-text{font-size:15px}.proof-inner{justify-content:center;text-align:center}.section{padding:90px 0}.grid3,.feature,.reviews,.pricing{grid-template-columns:1fr}.features{gap:90px;margin-top:55px}.feature.reverse .feature-phone{order:0}.feature-phone{margin-bottom:10px}.mini-phone{width:220px}.sounds{grid-template-columns:repeat(2,1fr)}.timeline:before{left:62px}.moment{grid-template-columns:78px 1fr;gap:15px}.footer-grid{grid-template-columns:1fr 1fr}.footer-grid>div:first-child{grid-column:1/-1}.final{padding:110px 0}.aurora.one,.aurora.two{width:320px;height:320px}.stores{gap:8px}.store{padding:10px 12px}.store strong{font-size:11px}}
+
+/* ===== EventSphere Theme + Responsive Hero ===== */
+:root{
+  --bg:#f7f7fb;--fg:#171827;--primary:#8067e8;--muted:#6d6b7d;
+  --border:#e4e3ed;--card:#ffffff;--teal:#43b9b3;
+  --nav-bg:rgba(247,247,251,.84);--soft:rgba(128,103,232,.035);
+  --body-muted:rgba(23,24,39,.62);--body-faint:rgba(23,24,39,.48);
+  --phone-shell:#202338;--phone-bg:#080a15;--screen-bg:#0d1021;
+  --phone-text:rgba(255,255,255,.72);--phone-faint:rgba(255,255,255,.42);
+}
+body.dark{
+  --bg:#080a15;--fg:#f4f3fb;--primary:#a994ff;--muted:#aaa7bc;
+  --border:rgba(255,255,255,.10);--card:#111426;--teal:#63d2ca;
+  --nav-bg:rgba(8,10,21,.82);--soft:rgba(169,148,255,.055);
+  --body-muted:rgba(244,243,251,.62);--body-faint:rgba(244,243,251,.44);
+  --phone-shell:#202338;--phone-bg:#080a15;--screen-bg:#0d1021;
+  --phone-text:rgba(255,255,255,.72);--phone-faint:rgba(255,255,255,.42);
+}
+body{background:var(--bg);color:var(--fg);transition:background .35s ease,color .35s ease}
+nav.scrolled{background:var(--nav-bg);border-bottom-color:var(--border)}
+.nav-links{color:var(--body-muted)}
+.nav-links a:hover{color:var(--fg)}
+.pill{color:#fff}
+.theme-toggle{
+  width:40px;height:40px;border:1px solid var(--border);border-radius:999px;
+  background:color-mix(in srgb,var(--card) 82%,transparent);color:var(--fg);
+  display:inline-flex;align-items:center;justify-content:center;cursor:pointer;
+  transition:transform .2s ease,background .3s ease,border-color .3s ease;
+  margin-left:10px;box-shadow:0 8px 24px rgba(50,45,90,.08)
+}
+.theme-toggle:hover{transform:translateY(-2px)}
+.theme-toggle .sun{display:inline}.theme-toggle .moon-icon{display:none}
+body.dark .theme-toggle .sun{display:none}body.dark .theme-toggle .moon-icon{display:inline}
+.hero{grid-template-columns:minmax(300px,.88fr) minmax(0,1.12fr);gap:clamp(20px,4vw,70px);min-height:clamp(720px,100vh,920px)}
+.phone-wrap{grid-column:1;grid-row:1;min-width:0;width:100%;height:100%;padding:40px 0;transform:translateZ(0)}
+.hero-copy{grid-column:2;grid-row:1;padding:55px 32px 55px 0;margin:0;max-width:none}
+.phone{width:clamp(250px,24vw,345px);max-width:100%;transform:translateY(var(--scroll-y,0)) rotateY(-10deg) rotateZ(var(--scroll-r,2deg))}
+.hero .phone .screen-top{color:var(--phone-text)}
+.hero .phone .screen-card{border-color:rgba(255,255,255,.08);background:rgba(255,255,255,.045)}
+.hero .phone .screen-card-title{color:rgba(255,255,255,.68)}
+.hero .phone .screen-card-sub{color:rgba(255,255,255,.40)}
+.hero .phone .screen h3{color:rgba(255,255,255,.86)}
+.hero .phone .screen-label{color:#a994ff}
+.hero-text,.card p,.feature p,.timeline p,.intro p{color:var(--body-muted)}
+.rating{color:var(--body-muted)}
+.store{border-color:var(--border);background:color-mix(in srgb,var(--card) 78%,transparent)}
+.store small,.sound span,.person{color:var(--body-faint)}
+.store:hover{background:var(--card)}
+.proof,.sound-section,.pricing-section{background:var(--soft);border-color:var(--border);color:var(--body-muted)}
+.card,.sound{background:var(--card);border-color:var(--border);box-shadow:0 12px 35px rgba(45,42,75,.07)}
+.price ul{color:var(--body-muted)}
+.line{background:var(--border)}
+.price .cta{background:color-mix(in srgb,var(--fg) 7%,transparent)}
+.premium{background:color-mix(in srgb,var(--primary) 7%,var(--card));border-color:color-mix(in srgb,var(--primary) 65%,var(--border))}
+.final{background:var(--bg)}
+footer{background:var(--bg);border-top-color:var(--border)}
+.theme-toggle svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+@media(max-width:1100px){
+  .hero{grid-template-columns:minmax(280px,.8fr) minmax(0,1.2fr);gap:20px}
+  .hero-copy{padding-right:24px}
+  h1{font-size:clamp(48px,6vw,78px)}
+  .phone{width:clamp(240px,25vw,310px)}
+}
+@media(max-width:900px){
+  .container{padding:0 24px}
+  .hero{grid-template-columns:minmax(260px,.85fr) minmax(0,1.15fr);min-height:760px;gap:12px}
+  .hero-copy{padding:50px 16px 50px 0}
+  .phone-wrap{padding:30px 0}
+  .phone{width:clamp(230px,29vw,285px)}
+  h1{font-size:clamp(44px,6vw,64px)}
+  .nav-links{gap:18px}
+}
+@media(max-width:767px){
+  .container{padding:0 20px}
+  nav{height:68px}
+  .nav-inner{gap:8px}.brand{font-size:13px;letter-spacing:.18em}
+  .nav-links{display:none}.desktop{display:none}.mobile{display:inline}
+  .theme-toggle{width:36px;height:36px;margin-left:auto}
+  .pill{padding:9px 15px}
+  .hero{display:flex;flex-direction:column;min-height:auto;padding-top:78px;gap:0}
+  .phone-wrap{order:1;height:auto;min-height:0;width:100%;padding:25px 0 20px;display:flex;align-items:center;justify-content:center}
+  .hero-copy{order:2;padding:30px 0 70px;width:100%;text-align:left}
+  .phone{width:min(260px,66vw);max-width:260px;transform:none}
+  .hero-copy h1{font-size:clamp(42px,12vw,58px);line-height:1.01;margin-top:18px}
+  .hero-text{font-size:15px;line-height:1.7;margin-top:22px}
+  .stores{margin-top:24px}
+  .rating{margin-top:13px}
+  .proof-inner{justify-content:center;text-align:center}
+  .section{padding:90px 0}
+  .grid3,.feature,.reviews,.pricing{grid-template-columns:1fr}
+  .features{gap:90px;margin-top:55px}
+  .feature.reverse .feature-phone{order:0}.feature-phone{margin-bottom:10px}
+  .mini-phone{width:220px}
+  .sounds{grid-template-columns:repeat(2,1fr)}
+  .timeline:before{left:62px}.moment{grid-template-columns:78px 1fr;gap:15px}
+  .footer-grid{grid-template-columns:1fr 1fr}.footer-grid>div:first-child{grid-column:1/-1}
+  .final{padding:110px 0}.aurora.one,.aurora.two{width:320px;height:320px}
+  .stores{gap:8px}.store{padding:10px 12px}.store strong{font-size:11px}
+}
+@media(max-width:430px){
+  .container{padding:0 16px}
+  .brand{font-size:12px}
+  .pill{font-size:11px;padding:9px 13px}
+  .theme-toggle{width:34px;height:34px}
+  .phone-wrap{padding-top:18px}
+  .phone{width:min(235px,70vw)}
+  .hero-copy{padding-top:24px}
+  .hero-copy h1{font-size:clamp(38px,12.5vw,52px)}
+  .hero-text{font-size:14px}
+  .stores{flex-direction:column;align-items:stretch}.store{justify-content:center}
+  .sounds{grid-template-columns:1fr}
+}
+@media(min-width:768px){
+  .hero .phone-wrap{animation:phoneIn 1.2s .15s forwards,float 6s 1.35s ease-in-out infinite}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition:none!important}}
+
+/* ===== EventSphere real app-screen recreations (inside phone mockups) ===== */
+.screen.appui{padding:0;background:#F3F2FB;display:flex;flex-direction:column;text-align:left}
+.app-head{background:linear-gradient(135deg,#6C63FF,#7C6FF2);padding:34px 16px 14px;color:#fff;flex-shrink:0}
+.app-eyebrow{font-size:8px;letter-spacing:.14em;text-transform:uppercase;opacity:.75}
+.app-head h4{font-size:18px;font-weight:800;margin:4px 0 2px;letter-spacing:-.02em;line-height:1.1}
+.app-head p{font-size:9px;opacity:.82;margin:0;line-height:1.4}
+.app-body{flex:1;overflow:hidden;padding:12px 14px;display:flex;flex-direction:column;gap:8px;background:#F3F2FB}
+.app-card{background:#fff;border-radius:11px;padding:9px 11px;box-shadow:0 6px 16px rgba(50,45,90,.09);font-size:9px;color:#374151}
+.app-btn{background:#6C63FF;color:#fff;text-align:center;border-radius:8px;padding:8px;font-size:10px;font-weight:700}
+.app-btn.danger{background:#EF4444}
+.app-input{background:#FAFAFA;border:1.2px solid #E7E7F0;border-radius:8px;padding:7px 9px;font-size:9px;color:#9CA3AF}
+.app-stats{display:flex;gap:5px}
+.app-stat{flex:1;background:#EDE9FE;border-radius:9px;padding:7px 4px;text-align:center}
+.app-stat b{display:block;font-size:14px;color:#6C63FF;line-height:1.2}
+.app-stat span{font-size:7px;color:#6B7280}
+.app-sectitle{font-size:10px;font-weight:800;color:#1F2937}
+.app-event{display:flex;gap:8px;align-items:center;background:#fff;border-radius:10px;padding:7px;box-shadow:0 4px 12px rgba(50,45,90,.06)}
+.app-datebadge{width:28px;height:28px;border-radius:6px;background:#6C63FF;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:7px;font-weight:800;flex-shrink:0;line-height:1.2}
+.app-event b{display:block;font-size:9.5px;color:#1F2937}
+.app-event span{font-size:7.5px;color:#6B7280}
+.app-cats{display:grid;grid-template-columns:1fr 1fr;gap:5px}
+.app-cat{border-radius:9px;padding:7px 6px;font-size:8px;font-weight:800;text-align:center}
+.app-tabbar{display:flex;justify-content:space-around;padding:7px 0;font-size:7.5px;color:#9CA3AF;background:#fff;border-top:1px solid #EEEEF4}
+.app-tabbar .on{color:#6C63FF;font-weight:800}
+.app-ring{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:#1F2937}
+</style>
+</head>
+<body>
+<div class="noise"></div>
+
+<nav id="nav"><div class="container nav-inner">
+<a class="brand" href="#"><span class="moon"></span>EVENTSPHERE</a>
+<div class="nav-links"><a href="#features">Features</a><a href="#screens">Screens</a><a href="#roles">Roles</a></div>
+<div style="display:flex;align-items:center;gap:2px">
+<button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode" title="Switch theme">
+<svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path></svg>
+<svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5 8.5 8.5 0 1 0 20.5 14.2Z"></path></svg>
+</button>
+<a class="pill" href="#download"><span class="desktop">View Project</span><span class="mobile">View</span></a>
+</div>
+</div></nav>
+
+<main>
+<section class="hero">
+<div class="aurora one"></div><div class="aurora two"></div><div class="stars" id="stars"></div>
+<div class="phone-wrap">
+<div class="phone" id="heroPhone"><div class="notch"></div><div class="screen appui">
+<div class="app-head"><div class="app-eyebrow">Good Afternoon ☀️</div><h4>sahil</h4><p>Welcome to EventPortal</p></div>
+<div class="app-body">
+<div class="app-stats"><div class="app-stat"><b>4</b><span>Upcoming</span></div><div class="app-stat"><b>1</b><span>Registered</span></div><div class="app-stat"><b>4</b><span>Active</span></div></div>
+<div class="app-sectitle">Upcoming Events</div>
+<div class="app-event"><div class="app-datebadge">23<br>JUL</div><div><b>Sports Gala</b><span>Sports Complex Karachi</span></div></div>
+<div class="app-event"><div class="app-datebadge" style="background:#F59E0B">11<br>SEP</div><div><b>Hackfest</b><span>IBA Karachi</span></div></div>
+<div class="app-sectitle">Browse Categories</div>
+<div class="app-cats"><div class="app-cat" style="background:#EDE9FE;color:#6C63FF">💻 Tech Events</div><div class="app-cat" style="background:#E0F2FE;color:#0EA5E9">🎓 Workshops</div></div>
+</div>
+<div class="app-tabbar"><span class="on">Home</span><span>Events</span><span>Profile</span></div>
+</div></div>
+</div>
+<div class="container hero-copy">
+<div class="eyebrow">UNIVERSITY EVENT MANAGEMENT</div>
+<h1><span>Discover campus</span><span>events. Register</span><span>in one tap.</span></h1>
+<p class="hero-text">EventSphere brings every academic, cultural, technical, and social event at SZABIST into one clean app — browse, register, and never miss what's happening on campus.</p>
+<div class="stores">
+<a class="store" href="https://github.com/sahilkumar-05/EventSphere-University-Event-Management-Mobile-App"><span class="store-icon"></span><span><small>View the code on</small><strong>GitHub</strong></span></a>
+<a class="store" href="#download"><span class="store-icon">▶</span><span><small>Coming soon to</small><strong>Google Play</strong></span></a>
+</div>
+<div class="rating">⚡ &nbsp;React Native · TypeScript · 11 screens</div>
+</div>
+</section>
+
+<section class="proof"><div class="container proof-inner"><span>React Native + TypeScript</span><span>Student & Admin panels</span><span>One platform for every campus event</span></div></section>
+
+<section class="section"><div class="container"><div class="grid3">
+<div class="card reveal"><div class="icon">◉</div><h3>Secure signup & login</h3><p>Create an account with your university email and sign in safely every time you open the app.</p></div>
+<div class="card reveal"><div class="icon">◌</div><h3>Browse & register in seconds</h3><p>See every academic, cultural, technical and social event on campus, and register with a single tap.</p></div>
+<div class="card reveal"><div class="icon">⌁</div><h3>Stay always in the loop</h3><p>Track your registrations, event dates and venues from one clean dashboard.</p></div>
+</div></div></section>
+
+<section class="section" id="features"><div class="container">
+<div class="intro"><div class="label">BUILT FOR CAMPUS LIFE</div><h2>Made for busy student life.</h2><p>Every screen in EventSphere is built to get you from discovering an event to registering for it in seconds.</p></div>
+<div class="features">
+<div class="feature reveal"><div class="feature-phone"><div class="phone mini-phone story"><div class="notch"></div><div class="screen appui">
+<div class="app-head"><div class="app-eyebrow">Discover</div><h4>Explore Events</h4><p>University events & activities</p></div>
+<div class="app-body">
+<div class="app-input">🔍 &nbsp;Search events...</div>
+<div class="app-event"><div class="app-datebadge">23<br>JUL</div><div><b>Sports Gala</b><span>Sports Complex Karachi</span></div></div>
+<div class="app-event"><div class="app-datebadge" style="background:#F59E0B">11<br>SEP</div><div><b>Hackfest</b><span>IBA Karachi</span></div></div>
+<div class="app-event"><div class="app-datebadge" style="background:#F5C542;color:#1F2937">25<br>AUG</div><div><b>Zabefest</b><span>Szabist</span></div></div>
+</div></div></div></div><div class="feature-copy"><div class="label">EVENTSPHERE FEATURE</div><h3>Search & explore every event</h3><p>Browse academic, cultural, technical and social events across campus, filtered and searchable in real time.</p></div></div>
+<div class="feature reverse reveal"><div class="feature-phone"><div class="phone mini-phone breath"><div class="notch"></div><div class="screen appui">
+<div class="app-head"><div class="app-eyebrow">Event Portal</div><h4>Hackfest</h4><p>Explore the details and register</p></div>
+<div class="app-body">
+<div class="app-card"><b style="color:#1F2937">A Flagship Tech Event</b></div>
+<div class="app-card">📅 &nbsp;<b>2026-09-11</b>&nbsp; &nbsp;📍 &nbsp;<b>IBA Karachi</b></div>
+<div class="app-btn">Register Now</div>
+<div class="app-btn danger">Back</div>
+</div></div></div></div><div class="feature-copy"><div class="label">EVENTSPHERE FEATURE</div><h3>One-tap registration</h3><p>No forms, no friction. Confirm your seat at any event in a single tap, and it's saved straight to your profile.</p></div></div>
+<div class="feature reveal"><div class="feature-phone"><div class="phone mini-phone timer"><div class="notch"></div><div class="screen appui">
+<div class="app-head" style="background:#14152e"><div class="app-eyebrow" style="color:#A99CFF">ADMIN PANEL</div><h4>Admin Dashboard</h4><p style="opacity:.65">EventPortal Management System</p></div>
+<div class="app-body">
+<div class="app-stats"><div class="app-stat"><b>8</b><span>Users</span></div><div class="app-stat" style="background:#DBEAFE"><b style="color:#0EA5E9">4</b><span>Events</span></div><div class="app-stat" style="background:#D1FAE5"><b style="color:#10B981">9</b><span>Regs</span></div></div>
+<div class="app-card" style="display:flex;justify-content:space-around;padding:12px 6px">
+<div class="app-ring" style="background:conic-gradient(#6C63FF 33%,#EDE9FE 0)">33%</div>
+<div class="app-ring" style="background:conic-gradient(#0EA5E9 67%,#E0F2FE 0)">67%</div>
+<div class="app-ring" style="background:conic-gradient(#10B981 29%,#D1FAE5 0)">29%</div>
+</div>
+</div></div></div></div><div class="feature-copy"><div class="label">EVENTSPHERE FEATURE</div><h3>A dashboard for organizers</h3><p>Admins see total users, events and registrations at a glance, with live charts that update as students register.</p></div></div>
+</div></div></section>
+
+<section class="section sound-section" id="screens"><div class="container"><div class="intro"><div class="label">EVENT CATEGORIES</div><h2>Four categories. Every event covered.</h2></div>
+<div class="sounds">
+<div class="sound reveal"><div class="sound-icon">💻</div><strong>Tech Events</strong><span>Hands-on & coding</span></div><div class="sound reveal"><div class="sound-icon">🎓</div><strong>Workshops</strong><span>Learn & build</span></div><div class="sound reveal"><div class="sound-icon">🏆</div><strong>Competitions</strong><span>Compete & win</span></div><div class="sound reveal"><div class="sound-icon">🎤</div><strong>Seminars</strong><span>Learn from experts</span></div>
+</div></div></section>
+
+<section class="section"><div class="container"><div class="intro"><div class="label">HOW IT WORKS</div><h2>From sign-up to seat, in four steps.</h2></div>
+<div class="timeline">
+<div class="moment reveal"><div class="time">01</div><div><h3>Create your account</h3><p>Sign up with your university email and verify in seconds.</p></div></div>
+<div class="moment reveal"><div class="time">02</div><div><h3>Browse events</h3><p>Explore tech, cultural, academic and social events across campus.</p></div></div>
+<div class="moment reveal"><div class="time">03</div><div><h3>Register in one tap</h3><p>Pick an event, confirm your spot, and it's saved to your profile.</p></div></div>
+<div class="moment reveal"><div class="time">04</div><div><h3>Track & attend</h3><p>See every registration on your dashboard and show up ready.</p></div></div>
+</div></div></section>
+
+<section class="section"><div class="container"><div class="intro"><div class="label">UNDER THE HOOD</div><h2>Built to be portfolio-ready.</h2></div><div class="reviews">
+<div class="card review reveal"><div class="stars">STUDENT</div><h3>Register in one tap</h3><p>No paper forms, no email chains — students sign up with a university email and confirm a seat instantly.</p><div class="person">— Student flow</div></div>
+<div class="card review reveal"><div class="stars">ADMIN</div><h3>Full control from one dashboard</h3><p>Admins add, edit and delete events, then track registrations and engagement stats in real time.</p><div class="person">— Admin flow</div></div>
+<div class="card review reveal"><div class="stars">STACK</div><h3>Built the way production apps are</h3><p>React Native and TypeScript, with a clean navigation flow across 11 screens and two dashboards.</p><div class="person">— Tech stack</div></div>
+</div></div></section>
+
+<section class="section pricing-section" id="roles"><div class="container"><div class="intro"><div class="label">ROLES</div><h2>Two roles, one platform.</h2><p>Everyone signs in through the same app — what you can do depends on your role.</p></div>
+<div class="pricing">
+<div class="card price reveal"><h3>Student</h3><div class="price-value">Student Access</div><div class="line"></div><ul><li>Browse all events</li><li>Register in one tap</li><li>Track your registrations</li></ul><a class="cta" href="https://github.com/sahilkumar-05/EventSphere-University-Event-Management-Mobile-App">Explore student flow</a></div>
+<div class="card price premium reveal"><span class="trial">Full control</span><h3>Admin</h3><div class="price-value">Admin Access</div><div class="line"></div><ul><li>Create & manage events</li><li>Update event information</li><li>Delete events</li><li>Track user registrations</li><li>View platform statistics</li></ul><a class="cta" href="https://github.com/sahilkumar-05/EventSphere-University-Event-Management-Mobile-App">Explore admin flow</a></div>
+</div></div></section>
+
+<section class="final" id="download"><div class="final-glow"></div><div class="container final-content"><div class="label">EVENTSPHERE</div><h2>Your next campus event is one tap away.</h2><p>Currently in development — star the repo or explore the code while the Play Store release is on its way.</p><div class="stores">
+<a class="store" href="https://github.com/sahilkumar-05/EventSphere-University-Event-Management-Mobile-App"><span class="store-icon"></span><span><small>View the code on</small><strong>GitHub</strong></span></a>
+<a class="store" href="#"><span class="store-icon">▶</span><span><small>Coming soon to</small><strong>Google Play</strong></span></a>
+</div></div></section>
+</main>
+
+<footer><div class="container footer-grid">
+<div><a class="brand" href="#"><span class="moon"></span>EVENTSPHERE</a><p style="color:rgba(23,24,39,.38);font-size:12px;line-height:1.8;max-width:280px;margin-top:16px">University events, without the chaos.</p></div>
+<div><div class="footer-title">Explore</div><div class="footer-links"><a href="#features">Features</a><a href="#screens">Screens</a><a href="#roles">Roles</a></div></div>
+<div><div class="footer-title">Project</div><div class="footer-links"><a href="https://github.com/sahilkumar-05/EventSphere-University-Event-Management-Mobile-App">GitHub Repo</a><a href="#features">Tech Stack</a><a href="#download">Get the App</a></div></div>
+</div><div class="container copyright">© 2026 EventSphere — Built by Sahil, Sanjna, Santosh & Monish</div></footer>
+
+<script>
+
+const themeToggle=document.getElementById('themeToggle');
+const themeColor=document.getElementById('themeColor');
+const savedTheme=localStorage.getItem('eventsphere-theme');
+if(savedTheme==='dark') document.body.classList.add('dark');
+function updateThemeUI(){
+  const dark=document.body.classList.contains('dark');
+  themeToggle.setAttribute('aria-label',dark?'Switch to light mode':'Switch to dark mode');
+  themeToggle.setAttribute('title',dark?'Switch to light mode':'Switch to dark mode');
+  if(themeColor) themeColor.setAttribute('content',dark?'#080a15':'#f7f7fb');
+}
+updateThemeUI();
+themeToggle.addEventListener('click',()=>{
+  document.body.classList.toggle('dark');
+  localStorage.setItem('eventsphere-theme',document.body.classList.contains('dark')?'dark':'light');
+  updateThemeUI();
+});
+
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>50));
+
+const stars=document.getElementById('stars');
+for(let i=0;i<40;i++){
+  const s=document.createElement('i');s.className='star';
+  s.style.left=((i*37)%100)+'%';s.style.top=((i*61)%100)+'%';
+  s.style.opacity=.1+(i%5)*.04;s.style.animationDuration=(3+i%3)+'s';s.style.animationDelay=(i%5)+'s';
+  stars.appendChild(s);
+}
+
+const phone=document.getElementById('heroPhone');
+window.addEventListener('scroll',()=>{
+  if(innerWidth>767){
+    const y=Math.min(scrollY*.06,22), r=Math.max(2-scrollY*.006,-1);
+    phone.style.setProperty('--scroll-y', `${-y}px`);
+    phone.style.setProperty('--scroll-r', `${r}deg`);
+  } else {
+    phone.style.removeProperty('--scroll-y');
+    phone.style.removeProperty('--scroll-r');
+  }
+});
+
+const observer=new IntersectionObserver(entries=>{
+ entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')});
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>
